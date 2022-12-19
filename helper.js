@@ -18,14 +18,15 @@ const returnDifferentMessage = (Array) => {
 };
 
 const sendMessage = async (senderId) => {
-  await client.messages
-    .create({
+  try {
+    await client.messages.create({
       body: `${returnDifferentMessage(messagesArray)}`,
       from: "whatsapp:+14155238886",
       to: senderId,
-    })
-    .then((message) => console.log(message.sid))
-    .done();
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 module.exports = {
