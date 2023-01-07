@@ -18,16 +18,6 @@ App.get("/", (req, res) => {
   res.send("hello");
 });
 
-App.post("/whatsapp", async (req, res) => {
-  const senderId = req.body.From;
-  const incomingMessage = req.body.Body;
-  const regex = /(\d+)/;
-  const timer = req.body.Body.includes("seconds")
-    ? req.body.Body.match(regex)[0] * 1000
-    : req.body.Body.includes("minutes")
-    ? req.body.Body.match(regex)[0] * 60 * 1000
-    : req.body.Body.includes("hours")
-    ? req.body.Body.match(regex)[0] * 60 * 60 * 1000
-    : null;
-  await sendMessage.sendMessage(senderId, incomingMessage, timer);
+App.post("/whatsapp", (req, res) => {
+  sendMessage.sendMessage(req.body);
 });

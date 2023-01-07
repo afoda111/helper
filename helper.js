@@ -17,16 +17,31 @@ const returnDifferentMessage = (Array) => {
   return Array[Math.floor(Math.random() * messagesArray.length)];
 };
 
-const sendMessage = async (senderId, incomingMessage, timer) => {
+const returnTimer = (body) => {
+  let timer;
+  const regex = /(\d+)/;
+  const number = body.Body.match(regex)[0];
+  if (body.Body.includes("seconds")) {
+    timer = number * 1000;
+  } else if (body.Body.includes("minutes")) {
+    timer = number * 60 * 1000;
+  } else if (body.Body.includes("hours")) {
+    timer = number * 60 * 60 * 1000;
+  }
+  return timer;
+};
+
+const sendMessage = (body) => {
+  const senderId = body.From;
+  const incomingMessage = body.Body;
   try {
     setTimeout(async () => {
-      console.log("incomingMessage", incomingMessage);
       await client.messages.create({
         body: `${incomingMessage}`,
         from: "whatsapp:+14155238886",
         to: senderId,
       });
-    }, timer);
+    }, returnTimer(body));
   } catch (error) {
     console.log(error);
   }
