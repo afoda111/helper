@@ -17,13 +17,15 @@ const returnDifferentMessage = (Array) => {
   return Array[Math.floor(Math.random() * messagesArray.length)];
 };
 
-const sendMessage = async (senderId) => {
+const sendMessage = async (senderId, incomingMessage, timer) => {
   try {
-    await client.messages.create({
-      body: `${returnDifferentMessage(messagesArray)}`,
-      from: "whatsapp:+14155238886",
-      to: senderId,
-    });
+    setTimeout(async () => {
+      await client.messages.create({
+        body: `${incomingMessage}`,
+        from: "whatsapp:+14155238886",
+        to: senderId,
+      });
+    }, timer);
   } catch (error) {
     console.log(error);
   }
