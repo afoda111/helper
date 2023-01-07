@@ -20,6 +20,7 @@ const returnDifferentMessage = (Array) => {
 const sendMessage = async (senderId, incomingMessage, timer) => {
   try {
     setTimeout(async () => {
+      console.log("incomingMessage", incomingMessage);
       await client.messages.create({
         body: `${incomingMessage}`,
         from: "whatsapp:+14155238886",
