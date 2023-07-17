@@ -38,18 +38,7 @@ const returnTimer = (body) => {
 const sendMessage = async (body) => {
   const senderId = body.From;
 const incomingMessage = body.Body;
-if(incomingMessage=== 'enough'){
-  try {
 
-      await client.messages.create({
-        body: `Ok sir, let me know when you need me... STAY HARD`,
-        from: "whatsapp:+14155238886",
-        to: senderId,
-      });
-    }catch (error) {
-      console.log(error);
-    }
-  }else{
     try {
       setInterval(async ()=>{
         await client.messages.create({
@@ -57,12 +46,12 @@ if(incomingMessage=== 'enough'){
           from: "whatsapp:+14155238886",
           to: senderId,
         });
-      }, 30000)
+      }, 600000)
     } catch (error) {
       console.log(error);
 
     }
-  }
+  
 
   
 };
