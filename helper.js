@@ -11,6 +11,7 @@ const messagesArray = [
   "You will get through this just hold on tight",
   "They don't know me son !!",
   "Look at you and see within, see how powerfull you'are",
+  'keep your head down and do the work buddy',
 ];
 
 const returnDifferentMessage = (Array) => {
@@ -31,15 +32,17 @@ const returnTimer = (body) => {
   return timer;
 };
 
-const sendMessage = async (body) => {
+const sendMessage =  (body) => {
   const senderId = body.From;
  // const incomingMessage = body.Body;
   try {
+    setInterval(async ()=>{
       await client.messages.create({
         body: `${returnDifferentMessage(messagesArray)}`,
         from: "whatsapp:+14155238886",
         to: senderId,
       });
+    }, 5000)
   } catch (error) {
     console.log(error);
   }
