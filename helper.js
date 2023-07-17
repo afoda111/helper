@@ -37,9 +37,9 @@ const returnTimer = (body) => {
 
 const sendMessage = async (body) => {
   const senderId = body.From;
- // const incomingMessage = body.Body;
+const incomingMessage = body.Body;
   try {
-    if(req.body.body === 'enough'){
+    if(incomingMessage=== 'enough'){
 
       await client.messages.create({
         body: `Ok sir, let me know when you need me... STAY HARD`,
