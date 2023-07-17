@@ -12,6 +12,8 @@ const messagesArray = [
   "They don't know me son !!",
   "Look at you and see within, see how powerfull you'are",
   'keep your head down and do the work buddy',
+  'I love youuu',
+  'you"re strong, beautful, smart, keep going',
 ];
 
 const returnDifferentMessage = (Array) => {
@@ -42,7 +44,7 @@ const sendMessage =  (body) => {
         from: "whatsapp:+14155238886",
         to: senderId,
       });
-    }, 5000)
+    }, 300000)
   } catch (error) {
     console.log(error);
   }
