@@ -38,16 +38,19 @@ const returnTimer = (body) => {
 const sendMessage = async (body) => {
   const senderId = body.From;
 const incomingMessage = body.Body;
+if(incomingMessage=== 'enough'){
   try {
-    if(incomingMessage=== 'enough'){
 
       await client.messages.create({
         body: `Ok sir, let me know when you need me... STAY HARD`,
         from: "whatsapp:+14155238886",
         to: senderId,
       });
-    }else{
-
+    }catch (error) {
+      console.log(error);
+    }
+  }else{
+    try {
       setInterval(async ()=>{
         await client.messages.create({
           body: `${returnDifferentMessage(messagesArray)}`,
@@ -55,11 +58,13 @@ const incomingMessage = body.Body;
           to: senderId,
         });
       }, 30000)
-    }
+    } catch (error) {
+      console.log(error);
 
-  } catch (error) {
-    console.log(error);
+    }
   }
+
+  
 };
 
 module.exports = {
