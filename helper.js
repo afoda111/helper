@@ -35,7 +35,7 @@ const returnTimer = (body) => {
   return timer;
 };
 
-const sendMessage = async (body) => {
+const sendMessage =  (body) => {
   const senderId = body.From;
 const incomingMessage = body.Body;
 
