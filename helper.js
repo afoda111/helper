@@ -46,7 +46,7 @@ const incomingMessage = body.Body;
           from: "whatsapp:+14155238886",
           to: senderId,
         });
-      }, 600000)
+      }, 360000)
     } catch (error) {
       console.log(error);
 
