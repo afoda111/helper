@@ -54,7 +54,7 @@ const sendMessage = async (body) => {
           from: "whatsapp:+14155238886",
           to: senderId,
         });
-      }, 200000)
+      }, 5000)
     }
 
   } catch (error) {
