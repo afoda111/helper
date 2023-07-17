@@ -31,17 +31,15 @@ const returnTimer = (body) => {
   return timer;
 };
 
-const sendMessage = (body) => {
+const sendMessage = async (body) => {
   const senderId = body.From;
-  const incomingMessage = body.Body;
+ // const incomingMessage = body.Body;
   try {
-    setTimeout(async () => {
       await client.messages.create({
-        body: `${incomingMessage}`,
+        body: `${returnDifferentMessage(messagesArray)}`,
         from: "whatsapp:+14155238886",
         to: senderId,
       });
-    }, returnTimer(body));
   } catch (error) {
     console.log(error);
   }
