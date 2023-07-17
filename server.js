@@ -19,9 +19,7 @@ App.get("/", (req, res) => {
 });
 
 App.post("/whatsapp", (req, res) => {
-  if(req.body.body === 'enough'){
-    return false
-  }else{
+ 
     sendMessage.sendMessage(req.body);
-  }
-});
+  
+})

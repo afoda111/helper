@@ -14,6 +14,7 @@ const messagesArray = [
   'keep your head down and do the work buddy',
   'I love youuu',
   'you"re strong, beautful, smart, keep going',
+  'Have you eaten enough today???'
 ];
 
 const returnDifferentMessage = (Array) => {
@@ -34,17 +35,28 @@ const returnTimer = (body) => {
   return timer;
 };
 
-const sendMessage =  (body) => {
+const sendMessage = async (body) => {
   const senderId = body.From;
  // const incomingMessage = body.Body;
   try {
-    setInterval(async ()=>{
+    if(req.body.body === 'enough'){
+
       await client.messages.create({
-        body: `${returnDifferentMessage(messagesArray)}`,
+        body: `Ok sir, let me know when you need me... STAY HARD`,
         from: "whatsapp:+14155238886",
         to: senderId,
       });
-    }, 300000)
+    }else{
+
+      setInterval(async ()=>{
+        await client.messages.create({
+          body: `${returnDifferentMessage(messagesArray)}`,
+          from: "whatsapp:+14155238886",
+          to: senderId,
+        });
+      }, 200000)
+    }
+
   } catch (error) {
     console.log(error);
   }
