@@ -57,7 +57,7 @@ const sendMessageWithTimer =  (body) => {
   
     }
   }
-   setInterval(sendMessage, 30000)
+   setInterval(sendMessage, 300000)
   
 
   
