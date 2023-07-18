@@ -36,27 +36,27 @@ const returnTimer = (body) => {
 };
 
 
-const sendMessage = async () =>{
-  const senderId = body.From;
-  try {
-      
-    const send =   await client.messages.create({
-        body: `${returnDifferentMessage(messagesArray)}`,
-        from: "whatsapp:+14155238886",
-        to: senderId,
-      });
-      console.log('running')
-  } catch (error) {
-    console.log(error);
 
-  }
-}
 
 
 
 const sendMessageWithTimer =  (body) => {
 
-
+  const sendMessage = async () =>{
+    const senderId = body.From;
+    try {
+        
+      const send =   await client.messages.create({
+          body: `${returnDifferentMessage(messagesArray)}`,
+          from: "whatsapp:+14155238886",
+          to: senderId,
+        });
+        console.log('running')
+    } catch (error) {
+      console.log(error);
+  
+    }
+  }
    setInterval(sendMessage, 30000)
   
 
