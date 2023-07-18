@@ -19,5 +19,5 @@ App.get("/", (req, res) => {
 });
 
 App.post("/whatsapp", (req, res) => {
-  sendMessage.sendMessage(req.body);
+  sendMessage.sendMessageWithTimer(req.body);
 });
