@@ -42,7 +42,7 @@ const sendMessageWithTimer =  (body) => {
     try {
         
       const send =   await client.messages.create({
-          body: `hi`,
+          body: `${returnDifferentMessage(messagesArray)}`,
           from: "whatsapp:+14155238886",
           to: senderId,
         });
@@ -52,7 +52,7 @@ const sendMessageWithTimer =  (body) => {
   
     }
   }
-   setInterval(sendMessage, 1000)
+   setInterval(sendMessage, 60000)
   
 
   
