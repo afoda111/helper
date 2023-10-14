@@ -46,7 +46,6 @@ const sendMessageWithTimer =  (body) => {
           from: "whatsapp:+14155238886",
           to: senderId,
         });
-        console.log('running')
     } catch (error) {
       console.log(error);
   
